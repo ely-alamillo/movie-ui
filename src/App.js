@@ -44,24 +44,8 @@ export const App = () => {
               )
             })
           }
-
         </Switch>
       </HashRouter>
     </ApolloProvider>
   );
 };
-
-// {
-//   routes.map(({ path, breadcrums, component: Component}, idx) => {
-//     return (
-//       <Route 
-//         exact
-//         path={path}
-//         key={idx}
-//         render={(props) => {
-//           return <Component />
-//         }}
-//       />
-//     )
-//   })
-// }
