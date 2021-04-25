@@ -23,8 +23,9 @@ export const GenreSelection = ({ genres }) => {
         </div>
         <div className="grid grid-cols-4 gap-4">
           {
-            genres.map((genre) => {
+            genres.map((genre, idx) => {
               return <GenreCard
+                key={idx}
                 genre={genre}
                 onClick={() => console.log(genre)}
               />

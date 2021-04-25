@@ -1,7 +1,7 @@
 import { useFetchAllMovies } from 'hooks/rest';
-import { MoviePoster } from 'components/movie-poster'
 import { TopFive } from './top-five'
 import { GenreSelection } from './genre-selection'
+import { MovieGallery } from './movie-gallery/movie-gallery';
 
 /**
  * You have the option to use either REST
@@ -23,7 +23,8 @@ export const Home = () => {
       ) : (
         <>
           <TopFive movies={[1,2,3,4,5]}/>
-          <GenreSelection genres={["Comedy", "Action", "Drama", "True Crime"]}/>          
+          <GenreSelection genres={["Comedy", "Action", "Drama", "True Crime"]}/>         
+          <MovieGallery movies={[1,2,3,4,5,6,7,8,9,10]} /> 
         </>
       )}
     </div>
