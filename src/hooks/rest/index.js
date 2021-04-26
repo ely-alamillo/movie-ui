@@ -1,1 +1,3 @@
-export { default as useFetchAllMovies } from './useFetchAllMovies';
+export * from './useFetchAllMovies'
+export * from './useFetchSingleMovie'
+export * from './constants'

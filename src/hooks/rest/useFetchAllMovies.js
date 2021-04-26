@@ -1,28 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useQuery } from 'react-query'
+import { REST_API_ROOT_ENDPOINT } from 'hooks/rest'
 
-const REST_API_ROOT_ENDPOINT = 'http://localhost:2020/api';
 
-const useFetchMovies = () => {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+const fetchAllMovies = () => {
   const endpoint = `${REST_API_ROOT_ENDPOINT}/movies`;
 
-  useEffect(() => {
-    setLoading(true);
-    fetch(endpoint)
-      .then(res => res.json())
-      .then(res => {
-        setData(res);
-        setLoading(false);
-      })
-      .catch(() => {
-        setError(true);
-        setLoading(false);
-      });
-  }, [endpoint]);
+  return fetch(endpoint).then(res => res.json())    
+}
 
-  return { data, loading, error };
+export const useFetchAllMovies = (queryConfig) => {
+  const queryKey = 'fetchAllMovies'
+  
+  return useQuery(queryKey, fetchAllMovies, {...queryConfig })
+
 };
-
-export default useFetchMovies;

@@ -1,0 +1,1 @@
+export const REST_API_ROOT_ENDPOINT = 'http://localhost:2020/api';
