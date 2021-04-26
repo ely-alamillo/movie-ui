@@ -25,8 +25,6 @@ export const Home = () => {
     isLoading
   } = useFetchAllMovies({ staleTime: Infinity });
   
-  console.log({data})
-
   const memoizedTopFive = useMemo(() => getTopFiveMovies(data ? [...data]: []), [data])
 
   const renderError = () => {
