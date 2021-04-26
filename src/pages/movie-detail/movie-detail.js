@@ -3,8 +3,9 @@ import { useHistory, useParams } from 'react-router'
 import { Error } from 'components/error'
 import { Loader } from 'components/loader'
 import { Cast } from './cast'
-import { BackArrow, Layout } from 'components'
-import { capitalize, getHomeRoute } from 'utils'
+import { Layout } from 'components/layout'
+import { BackArrow, Star } from 'components/icons'
+import { getHomeRoute } from 'utils'
 
 
 export const MovieDetail = ({ movies }) => {
@@ -25,22 +26,22 @@ export const MovieDetail = ({ movies }) => {
   return (
     <Layout>
       {
-        isLoading ? <Loader loaderMessage="Loading movie details..."/> :
+        isLoading ? <Loader loaderMessage="Loading movie details..." /> :
 
           <section className="text-gray-600 body-font">
             {renderError()}
             <div className="container mx-auto flex px-5 pt-12">
-              <button 
+              <button
                 className="flex items-center"
                 onClick={() => history.push(getHomeRoute())}
               >
-                <BackArrow className='mr-1'/>
+                <BackArrow className='mr-1' />
                 <span className="text-2xl font-bold text-gray-900">
-                  Movies                  
+                  Movies
                 </span>
               </button>
             </div>
-            <div className="container mx-auto flex px-5 pb-24 pt-6 md:flex-row flex-col items-center">                                            
+            <div className="container mx-auto flex px-5 pb-24 pt-6 md:flex-row flex-col items-center">
               <div
                 className="p-4 pt-0 pl-0 lg:w-1/5 md:w-1/2 shadow-2x rounded-md"
               >
@@ -54,10 +55,14 @@ export const MovieDetail = ({ movies }) => {
                   />
                 </div>
               </div>
-              <div className="lg:flex-grow md:w-1/2 flex flex-col md:items-start text-left items-center pl-4">
-                <p className='text-sm mb-3 text-gray-400'>
-                  <span className="text-blue-700 font-bold text-xl">{data.voteAverage}</span>/10
-                </p>
+              <div className="lg:flex-grow md:w-1/2 flex flex-col md:items-start text-left items-center pl-4">                
+                <div className='text-sm flex text-blue-700 items-end'>
+                  
+                  <Star className="text-xl h-10 w-10"/>
+                  
+                  <div className="font-bold text-3xl">{data.voteAverage}</div>
+                  <div className='text-xl '>/10</div>
+                </div>
                 <h1 className="sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
                   {data.originalTitle}
                   <span className="text-gray-400 pl-2">({data.releaseDate.split('-')[0]})</span>

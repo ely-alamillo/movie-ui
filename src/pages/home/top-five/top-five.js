@@ -1,6 +1,7 @@
 import { useHistory } from 'react-router';
 import { MoviePoster } from 'components/movie-poster'
 import { getMovieDetailsRoute } from 'utils';
+import { Star } from 'components';
 
 export const Movie = ({ movie }) => {
   const history = useHistory();
@@ -16,7 +17,10 @@ export const Movie = ({ movie }) => {
       <div className="w-full pt-2">
         <div className="text-left flex justify-between">
           <h2 className="title-font font-medium text-lg text-gray-900 ">{movie.originalTitle}</h2>
-          <h3 className="text-gray-500 mb-3 ">{movie.voteAverage}</h3>
+          <div className='flex text-blue-700'>
+            <Star />
+            <h3 className="mb-3 ">{movie.voteAverage}</h3>
+          </div>
         </div>
         <p className="mb-4 text-left">{movie.genres.join(', ')}</p>
         <div className=''>
