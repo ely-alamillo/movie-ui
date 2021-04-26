@@ -3,6 +3,8 @@ import { Route, HashRouter, Switch } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
 import client from 'apollo-client';
 import { routes } from 'utils/routing';
+import { reactQueryClient } from 'utils/react-query-client'
+import { QueryClientProvider } from 'react-query'
 
 /**
  * This function is used to simulate performance benchmarking.
@@ -28,24 +30,26 @@ export const trackPageCompletedLoading = () => {
 export const App = () => {
   return (
     <ApolloProvider client={client}>
-      <HashRouter>
-        <Switch>
-          {
-            routes.map(({ path, breadcrums, component: Component }, idx) => {
-              return (
-                <Route
-                  exact
-                  path={path}
-                  key={idx}
-                  render={(props) => {
-                    return <Component />
-                  }}
-                />
-              )
-            })
-          }
-        </Switch>
-      </HashRouter>
+      <QueryClientProvider client={reactQueryClient}>
+        <HashRouter>
+          <Switch>
+            {
+              routes.map(({ path, breadcrums, component: Component }, idx) => {
+                return (
+                  <Route
+                    exact
+                    path={path}
+                    key={idx}
+                    render={(props) => {
+                      return <Component />
+                    }}
+                  />
+                )
+              })
+            }
+          </Switch>
+        </HashRouter>
+      </QueryClientProvider>
     </ApolloProvider>
   );
 };
