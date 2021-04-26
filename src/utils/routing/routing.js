@@ -1,4 +1,4 @@
-import { Home } from "pages"
+import { Home, MovieDetail } from "pages"
 
 export const ROUTE_MAP = {
   home: '/',
@@ -13,5 +13,12 @@ export const routes = [
     breadcrums: {
       items: []
     }
-  }
+  },
+  {
+    path: ROUTE_MAP.movieDetails,    
+    component: MovieDetail,
+    breadcrums: {
+      items: []
+    }
+  },
 ]
