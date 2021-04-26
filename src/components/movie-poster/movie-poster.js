@@ -5,7 +5,7 @@ export const MoviePoster = ({ link, children, classNames, onClick }) => {
       onClick={onClick}
     >
       <div className="h-full flex flex-col items-center text-center">
-        <img alt="team" className="flex-shrink-0 rounded-lg" src={link} height={450} width={300} />
+        <img loading="lazy" alt="team" className="flex-shrink-0 rounded-lg" src={link} height={450} width={300} />
         {children && children}
       </div>
     </div>
