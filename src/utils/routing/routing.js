@@ -22,3 +22,21 @@ export const routes = [
     }
   },
 ]
+
+export const interpolateParams = (route, params) => {
+  let interpolatedRoute = route;
+
+  Object.keys(params).forEach((key) => {
+    interpolatedRoute = interpolatedRoute.replace(`:${key}`, params[key])
+  })
+
+  return interpolatedRoute
+}
+
+export const getHomeRoute = () => {
+  return ROUTE_MAP.home
+}
+
+export const getMovieDetailsRoute = (id) => {
+  return `${interpolateParams(ROUTE_MAP.movieDetails, { id })}`
+}
