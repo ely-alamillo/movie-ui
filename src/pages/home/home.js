@@ -2,6 +2,7 @@ import { useFetchAllMovies } from 'hooks/rest';
 import { TopFive } from './top-five'
 import { GenreSelection } from './genre-selection'
 import { MovieGallery } from './movie-gallery/movie-gallery';
+import { Layout } from 'components/layout'
 
 /**
  * You have the option to use either REST
@@ -17,7 +18,7 @@ export const Home = () => {
   console.log({ movie: data[0] })
 
   return (
-    <div className="">
+    <Layout>
       {loading ? (
         <div>Loading movies...</div>
       ) : (
@@ -27,6 +28,6 @@ export const Home = () => {
           <MovieGallery movies={[1,2,3,4,5,6,7,8,9,10]} /> 
         </>
       )}
-    </div>
+    </Layout>
   );
 };
