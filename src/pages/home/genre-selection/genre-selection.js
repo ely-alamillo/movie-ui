@@ -1,3 +1,6 @@
+import { useHistory } from "react-router"
+import { getMovieByGenreRoute } from 'utils/routing'
+
 const GenreCard = ({ genre, onClick }) => {
   return (
     <div
@@ -12,6 +15,8 @@ const GenreCard = ({ genre, onClick }) => {
 }
 
 export const GenreSelection = ({ genres }) => {
+  const history = useHistory()
+
   return (
     <section className="text-gray-600 body-font bg-gray-100">
       <div className="container px-5 py-24 mx-auto">
@@ -27,7 +32,7 @@ export const GenreSelection = ({ genres }) => {
               return <GenreCard
                 key={idx}
                 genre={genre}
-                onClick={() => console.log(genre)}
+                onClick={() => history.push(getMovieByGenreRoute(genre.toLowerCase()))}
               />
             })
           }

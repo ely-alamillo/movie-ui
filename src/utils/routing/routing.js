@@ -1,4 +1,4 @@
-import { Home, MovieDetail } from "pages"
+import { Home, MovieDetail, MoviesByGenre } from "pages"
 
 export const ROUTE_MAP = {
   home: '/',
@@ -21,6 +21,13 @@ export const routes = [
       items: []
     }
   },
+  {
+    path: ROUTE_MAP.movieGenre,    
+    component: MoviesByGenre,
+    breadcrums: {
+      items: []
+    }
+  },
 ]
 
 export const interpolateParams = (route, params) => {
@@ -39,4 +46,8 @@ export const getHomeRoute = () => {
 
 export const getMovieDetailsRoute = (id) => {
   return `${interpolateParams(ROUTE_MAP.movieDetails, { id })}`
+}
+
+export const getMovieByGenreRoute = (id) => {
+  return `${interpolateParams(ROUTE_MAP.movieGenre, { id })}`
 }

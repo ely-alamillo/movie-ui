@@ -5,6 +5,8 @@ import { MovieGallery } from './movie-gallery/movie-gallery';
 import { Layout } from 'components/layout'
 import { Error } from 'components/error'
 import { Loader } from 'components/loader'
+import { useMemo } from 'react';
+import { getTopFiveMovies } from './utils';
 
 /**
  * You have the option to use either REST
@@ -22,6 +24,10 @@ export const Home = () => {
     isError,
     isLoading
   } = useFetchAllMovies({ staleTime: Infinity });
+  
+  console.log({data})
+
+  const memoizedTopFive = useMemo(() => getTopFiveMovies(data ? [...data]: []), [data])
 
   const renderError = () => {
     return isError ? <Error errorMessage={'We encountered an error loading this page.'} /> :  null
@@ -34,9 +40,9 @@ export const Home = () => {
       ) : (
         <>
           {renderError()}
-          <TopFive movies={data} />
-          <GenreSelection genres={["Comedy", "Action", "Drama", "True Crime"]} />
-          <MovieGallery movies={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]} />
+          <TopFive movies={memoizedTopFive} />
+          <GenreSelection genres={["Comedy", "Action", "Drama", "Science Fiction"]} />
+          <MovieGallery movies={data} />
         </>
       )}
     </Layout>

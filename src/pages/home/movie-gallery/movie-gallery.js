@@ -1,6 +1,10 @@
 import { MoviePoster } from 'components/movie-poster'
+import { useHistory } from 'react-router'
+import { getMovieDetailsRoute } from 'utils';
 
 export const MovieGallery = ({ movies }) => {
+  const history = useHistory();
+
   return (
     <section className="body-font">
       <div className="container px-5 py-24 mx-auto">
@@ -12,12 +16,12 @@ export const MovieGallery = ({ movies }) => {
         </div>
         <div className="flex flex-wrap -m-4">
           {
-            movies.map((movie, idx) => {
+            movies.map((movie) => {
               return (
                 <MoviePoster
-                  key={idx}
-                  link='https://image.tmdb.org/t/p/w300_and_h450_bestv2//e6SK2CAbO3ENy52UTzP3lv32peC.jpg'
-                  onClick={() => console.log('click')}
+                  key={movie.id}
+                  link={movie.posterPath}
+                  onClick={() => history.push(getMovieDetailsRoute(movie.id))}
                 />
               )
             })
