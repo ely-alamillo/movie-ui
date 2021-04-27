@@ -41,6 +41,7 @@ export const MovieGallery = ({ movies }) => {
               return (
                 <MoviePoster
                   key={movie.id}
+                  alt={`${movie.originalTitle} poster`}
                   link={movie.posterPath}
                   onClick={() => history.push(getMovieDetailsRoute(movie.id))}
                 />

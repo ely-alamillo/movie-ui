@@ -70,6 +70,7 @@ export const MoviesByGenre = () => {
                         <MoviePoster
                           key={movie.id}
                           link={movie.posterPath}
+                          alt={`${movie.originalTitle} poster`}
                           onClick={() => history.push(getMovieDetailsRoute(movie.id))}
                         />
                       )

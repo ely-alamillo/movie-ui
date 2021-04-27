@@ -9,6 +9,7 @@ export const Movie = ({ movie }) => {
   return (
     <MoviePoster
       link={movie.posterPath}
+      alt={`${movie.originalTitle} poster`}
       classNames='group'
       onClick={() => {
         history.push(getMovieDetailsRoute(movie.id))
