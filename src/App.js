@@ -28,28 +28,32 @@ export const trackPageCompletedLoading = () => {
 };
 
 export const App = () => {
+  trackInitialLoad()
   return (
-    <ApolloProvider client={client}>
-      <QueryClientProvider client={reactQueryClient}>
-        <HashRouter>
-          <Switch>
-            {
-              routes.map(({ path, breadcrums, component: Component }, idx) => {
-                return (
-                  <Route
-                    exact
-                    path={path}
-                    key={idx}
-                    render={(props) => {
-                      return <Component />
-                    }}
-                  />
-                )
-              })
-            }
-          </Switch>
-        </HashRouter>
-      </QueryClientProvider>
-    </ApolloProvider>
+    <>
+      <ApolloProvider client={client}>
+        <QueryClientProvider client={reactQueryClient}>
+          <HashRouter>
+            <Switch>
+              {
+                routes.map(({ path, breadcrums, component: Component }, idx) => {
+                  return (
+                    <Route
+                      exact
+                      path={path}
+                      key={idx}
+                      render={(props) => {
+                        return <Component />
+                      }}
+                    />
+                  )
+                })
+              }
+            </Switch>
+          </HashRouter>
+        </QueryClientProvider>
+      </ApolloProvider>
+      {trackPageCompletedLoading()}
+    </>
   );
 };

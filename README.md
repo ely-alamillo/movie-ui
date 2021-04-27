@@ -1,6 +1,12 @@
 # Podium frontend take-home challenge
 Thank you for taking the time to complete this assessment. This application contains the necessary starting grounds for you to complete the tasks as outlined below. Please take as much time as you feel is necessary to demonstrate your ability. Unless otherwise stated, you are expected to document and test along the way as you see fit. 
 
+## Notes
+* Top 5 is determined by using the popularity field returned from the api.
+* Image lazy loading is acheived throug native html img loading attribute. This is supported in all major browsers except IE11. An alternative would be using an intersection observer to acheive this howver IE11 does not support that either. I decided to go with the native feature as it covers majority of browser and implementation is simple.
+* Pagination would ideally happen server-side. This would help with slower networks and also improve performance of the site as we would only request needed data. It can also be done on the FE however we would still need to load all the data and then use some sort of list virtualization to only render visible items. FE pagination in this case would also negatively impact sorting/filtering since we would need to only sort/filter on the currently presented fields otherwise the UX would feel disconnected for the user.
+
+
 
 ## Project Description
 Your task is to build an application that matches the design mock-ups ([as found here](https://share.goabstract.com/b949487b-4df0-4431-8ca3-6cd912096898)) around a list of popular movies from [The Movie Database](https://www.themoviedb.org/). All assests are provided to you in the app. You are welcome to use them however you prefer. This assessment is broken into two separate parts, the first being to convert the data provided to meet the designs you have been given. Here are some important things to keep in mind:

@@ -6,6 +6,7 @@ import { Cast } from './cast'
 import { Layout } from 'components/layout'
 import { BackArrow, Star } from 'components/icons'
 import { getHomeRoute } from 'utils'
+import { trackInitialLoad, trackPageCompletedLoading } from 'App'
 
 
 export const MovieDetail = ({ movies }) => {
@@ -22,6 +23,8 @@ export const MovieDetail = ({ movies }) => {
   const renderError = () => {
     return isError ? <Error errorMessage={'We encountered an error loading this page.'} /> : null
   }
+
+  trackInitialLoad()
 
   return (
     <Layout>
@@ -78,8 +81,8 @@ export const MovieDetail = ({ movies }) => {
               <Cast castMembers={data.cast} />
             </div>
           </section>
-
       }
+      {trackPageCompletedLoading()}
     </Layout>
   )
 }

@@ -25,8 +25,6 @@ export const useMoviesFilter = (initialFilter, initalMovies) => {
     
   }, [filter, JSON.stringify(initalMovies)])
 
-  console.log({initalMovies, filter, initialFilter, filteredMovies})
-
   return { filter, setFilter, filteredMovies }
 
 }
