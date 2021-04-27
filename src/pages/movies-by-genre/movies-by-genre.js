@@ -30,8 +30,6 @@ export const MoviesByGenre = () => {
 
   const {filter, setFilter, filteredMovies} = useMoviesFilter(isLoading ? '' : 'popularity', isLoading ? [] : [...data])
 
-  console.log({ filteredMovies })
-
   const renderError = () => {
     return isError ? <Error errorMessage={'We encountered an error loading this page.'} /> : null
   }

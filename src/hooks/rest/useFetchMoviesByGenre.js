@@ -8,9 +8,9 @@ export const fetchMoviesByGenre = async ({ queryKey }) => {
     const allMovies = await fetchAllMovies()
     const filteredMovies = allMovies.filter((movie) => {
       const normalizedGenres = movie.genres.map((genre) => genre.toLowerCase())
-      
+
       return normalizedGenres.includes(genre)
-    })    
+    })
 
     return filteredMovies
   } catch (error) {
@@ -21,5 +21,15 @@ export const fetchMoviesByGenre = async ({ queryKey }) => {
 export const useFetchMoviesByGenre = (genre, queryConfig) => {
   const queryKey = ['fetchMoviesByGenre', { genre }]
 
-  return useQuery(queryKey, fetchMoviesByGenre, {...queryConfig})
+  return useQuery(queryKey, fetchMoviesByGenre,
+    {
+      onSuccess: () => {
+        // add logging 
+      },
+      onError: (error) => {
+        // add error
+      },
+      ...queryConfig
+    }
+  )
 }

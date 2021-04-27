@@ -11,5 +11,15 @@ const FetchSingleMovie = ({ queryKey }) => {
 export const useFetchSingleMovie = (id, queryConfig) => {
   const queryKey = ['fetchSingleMovie', { id }]
 
-  return useQuery(queryKey, FetchSingleMovie, { ...queryConfig })
+  return useQuery(queryKey, FetchSingleMovie,
+    {
+      onSuccess: () => {
+        // add logging 
+      },
+      onError: (error) => {
+        // add error
+      },
+      ...queryConfig
+    }
+  )
 }

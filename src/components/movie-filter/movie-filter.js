@@ -11,7 +11,7 @@ export const MovieFilter = ({ filter, setFilter, options }) => {
           {
             options.map(({value, label}) => {
               return (
-                <option value={value}>{label}</option>
+                <option value={value} key={value}>{label}</option>
               )
             })
           }         

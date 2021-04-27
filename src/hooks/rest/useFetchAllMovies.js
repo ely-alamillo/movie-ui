@@ -11,6 +11,16 @@ export const fetchAllMovies = () => {
 export const useFetchAllMovies = (queryConfig) => {
   const queryKey = 'fetchAllMovies'
   
-  return useQuery(queryKey, fetchAllMovies, {...queryConfig })
+  return useQuery(queryKey, fetchAllMovies, 
+    {
+      onSuccess: () => {
+        // add logging 
+      },
+      onError: (error) => {
+        // add error
+      },
+      ...queryConfig
+    }
+  )
 
 };
